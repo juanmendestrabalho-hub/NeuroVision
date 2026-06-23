@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroVision Pro - Visão Computacional Front-End</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="badge">PROJETO DE PESQUISA</span>
+                <h1>NeuroVision <span class="version">v1.0.0</span></h1>
+            </div>
+            <p class="subtitle">Análise de Espectro Cromático e Acessibilidade Óptica em Tempo Real</p>
+        </header>
+
+        <main class="app-core">
+            <section class="viewport-container">
+                <div class="canvas-wrapper">
+                    <video id="webcam" autoplay playsinline muted></video>
+                    <canvas id="output-canvas"></canvas>
+                    <div id="loading-overlay" class="overlay">Aguardando Câmera...</div>
+                </div>
+                
+                <div class="telemetry-bar">
+                    <div class="metric">FPS: <span id="fps-val">0</span></div>
+                    <div class="metric">Latência: <span id="latency-val">0ms</span></div>
+                    <div class="metric">Filtro Ativo: <span id="filter-name">Nenhum (Matriz Identidade)</span></div>
+                </div>
+            </section>
+
+            <section class="control-panel">
+                <h2>Painel de Controle Analítico</h2>
+                
+                <div class="control-group">
+                    <h3>1. Deficiências Visuais (Filtros Ópticos)</h3>
+                    <div class="grid-buttons">
+                        <button class="btn active" data-filter="normal">Visão Tricromática (Normal)</button>
+                        <button class="btn" data-filter="protanopia">Protanopia (Ausência de Vermelho)</button>
+                        <button class="btn" data-filter="deuteranopia">Deuteranopia (Ausência de Verde)</button>
+                        <button class="btn" data-filter="tritanopia">Tritanopia (Ausência de Azul)</button>
+                        <button class="btn" data-filter="achromatopsia">Acromatopsia (Monocromático)</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>2. Processamento Digital de Sinal (DSP)</h3>
+                    <div class="grid-buttons">
+                        <button class="btn special" data-filter="grayscale">Conversão de Luminância (YUV)</button>
+                        <button class="btn special" data-filter="threshold">Segmentação Binária (Threshold)</button>
+                    </div>
+                </div>
+
+                <div class="control-group data-display">
+                    <h3>3. Dados de Histograma Vetorial</h3>
+                    <div class="histogram-mock">
+                        <div class="bar r" style="height: 70%"></div>
+                        <div class="bar g" style="height: 85%"></div>
+                        <div class="bar b" style="height: 60%"></div>
+                    </div>
+                    <p class="disclaimer">Processamento executado em threads síncronas locais via ImageData API.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="core.js"></script>
+</body>
+</html>
